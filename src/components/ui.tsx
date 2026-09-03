@@ -14,7 +14,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const variantCls: Record<Variant, string> = {
   primary: 'bg-accent text-accent-ink hover:brightness-95 disabled:bg-neutral-soft disabled:text-muted',
   secondary: 'bg-surface-2 text-ink border border-line hover:bg-line/60 disabled:text-muted',
-  ghost: 'bg-transparent text-accent hover:bg-accent-soft disabled:text-muted',
+  ghost: 'bg-transparent text-accent-text hover:bg-accent-soft disabled:text-muted',
   danger: 'bg-crit-soft text-crit hover:brightness-95 disabled:text-muted',
 }
 const sizeCls = { sm: 'h-9 px-3 text-sm', md: 'h-11 px-4 text-[15px]', lg: 'h-12 px-5 text-base' }
@@ -41,7 +41,7 @@ export function IconButton({ icon, label, className = '', ...rest }: ButtonHTMLA
 type Tone = 'good' | 'warn' | 'crit' | 'neutral' | 'accent' | 'outline'
 const toneCls: Record<Tone, string> = {
   good: 'bg-good-soft text-good', warn: 'bg-warn-soft text-warn', crit: 'bg-crit-soft text-crit',
-  neutral: 'bg-neutral-soft text-neutral', accent: 'bg-accent-soft text-accent', outline: 'border border-line-strong text-muted',
+  neutral: 'bg-neutral-soft text-neutral', accent: 'bg-accent-soft text-accent-text', outline: 'border border-line-strong text-muted',
 }
 export function Chip({ tone = 'neutral', icon, children, className = '' }: { tone?: Tone; icon?: IconName; children: ReactNode; className?: string }) {
   return (
@@ -56,7 +56,7 @@ export function Chip({ tone = 'neutral', icon, children, className = '' }: { ton
 export function FilterChip({ active, children, onClick, icon }: { active?: boolean; children: ReactNode; onClick?: () => void; icon?: IconName }) {
   return (
     <button type="button" onClick={onClick} aria-pressed={active}
-      className={`press inline-flex h-9 shrink-0 items-center gap-1 rounded-full border px-3 text-sm font-medium ${active ? 'border-accent bg-accent-soft text-accent' : 'border-line bg-surface text-ink'}`}>
+      className={`press inline-flex h-9 shrink-0 items-center gap-1 rounded-full border px-3 text-sm font-medium ${active ? 'border-accent bg-accent-soft text-accent-text' : 'border-line bg-surface text-ink'}`}>
       {children}
       {icon && <Icon name={icon} size={14} />}
     </button>
@@ -199,9 +199,9 @@ export function Row({ children, onClick, className = '' }: { children: ReactNode
   )
 }
 
-export function SectionTitle({ children, action }: { children: ReactNode; action?: ReactNode }) {
+export function SectionTitle({ children, action, className = '' }: { children: ReactNode; action?: ReactNode; className?: string }) {
   return (
-    <div className="mb-2 mt-5 flex items-center justify-between px-4">
+    <div className={`mb-2 mt-5 flex items-center justify-between px-4 ${className}`}>
       <h2 className="font-display text-lg font-semibold">{children}</h2>
       {action}
     </div>

@@ -38,7 +38,7 @@ export function Shell() {
   const { pathname } = useLocation()
   const hideTabs = pathname.startsWith('/sell/done')
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-[1280px] lg:grid lg:grid-cols-[232px_minmax(0,1fr)]">
+    <div className="flex min-h-dvh w-full lg:grid lg:grid-cols-[248px_minmax(0,1fr)]">
       {/* Desktop chap panel */}
       <aside className="hidden lg:sticky lg:top-0 lg:flex lg:h-dvh lg:flex-col lg:border-r lg:border-line lg:bg-surface">
         <div className="px-5 pb-4 pt-6">
@@ -47,7 +47,7 @@ export function Shell() {
         </div>
         <nav className="flex flex-col gap-0.5 px-3">
           {tabs.map((t) => (
-            <NavLink key={t.to} to={t.to} className={({ isActive }) => `flex h-11 items-center gap-3 rounded px-3 text-[15px] font-medium ${isActive ? 'bg-accent-soft text-accent' : 'text-ink hover:bg-surface-2'}`}>
+            <NavLink key={t.to} to={t.to} className={({ isActive }) => `flex h-11 items-center gap-3 rounded px-3 text-[15px] font-medium ${isActive ? 'bg-accent-soft text-accent-text' : 'text-ink hover:bg-surface-2'}`}>
               <Icon name={t.icon} size={20} />{t.label}
             </NavLink>
           ))}
@@ -64,7 +64,7 @@ export function Shell() {
             <ul className="mx-auto flex h-[var(--tabbar-h)] max-w-lg items-stretch">
               {tabs.map((t) => (
                 <li key={t.to} className="flex-1">
-                  <NavLink to={t.to} className={({ isActive }) => `flex h-full flex-col items-center justify-center gap-0.5 text-[11px] font-medium ${t.primary ? (isActive ? 'text-accent' : 'text-accent') : isActive ? 'text-accent' : 'text-muted'}`}>
+                  <NavLink to={t.to} className={({ isActive }) => `flex h-full flex-col items-center justify-center gap-0.5 text-[11px] font-medium ${t.primary ? (isActive ? 'text-accent-text' : 'text-accent-text') : isActive ? 'text-accent-text' : 'text-muted'}`}>
                     {({ isActive }) => (
                       <>
                         {t.primary ? (
@@ -90,7 +90,7 @@ export function Shell() {
 export function Header({ title, back, right, sub }: { title: ReactNode; back?: boolean | string; right?: ReactNode; sub?: ReactNode }) {
   const nav = useNavigate()
   return (
-    <header className="sticky top-0 z-30 border-b border-line bg-bg/90 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b border-line bg-bg">
       <div className="flex h-14 items-center gap-1 px-2">
         {back && <IconButton icon="chevronLeft" label="Orqaga" onClick={() => (typeof back === 'string' ? nav(back) : nav(-1))} />}
         <div className={`min-w-0 flex-1 ${back ? '' : 'px-2'}`}>

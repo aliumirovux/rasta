@@ -8,6 +8,8 @@ const paths: Record<string, string> = {
   chevronRight: 'm9 6 6 6-6 6',
   chevronLeft: 'm15 6-6 6 6 6',
   chevronDown: 'm6 9 6 6 6-6',
+  arrowUp: 'M12 19V6m-6 6 6-6 6 6',
+  arrowDown: 'M12 5v13m6-6-6 6-6-6',
   alert: 'M12 9v4m0 4h.01M10.3 3.9 2.5 17.3A2 2 0 0 0 4.2 20h15.6a2 2 0 0 0 1.7-2.7L13.7 3.9a2 2 0 0 0-3.4 0Z',
   trash: 'M4 7h16M10 11v6m4-6v6M6 7l1 13h10l1-13M9 7V4h6v3',
   phone: 'M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z',
