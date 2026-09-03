@@ -1,5 +1,7 @@
 /* Rasta — dizayn tokenlari. Figma o'rniga shu fayl haqiqat manbai.
-   Qoida: komponentlar faqat shu o'zgaruvchilardan rang oladi; hex faqat shu yerda. */
+   Qoida: komponentlar faqat shu o'zgaruvchilardan rang oladi; hex faqat shu yerda.
+   Brend rangi — orange #f9a03f (landing bilan bir xil). Orange ustida OQ matn 2.1:1 —
+   o'tmaydi; shuning uchun fill'da qoraroq --accent-ink, matn/havolada --accent-text ishlatiladi. */
 :root {
   --bg: #f4f5f7;
   --surface: #ffffff;
@@ -9,9 +11,15 @@
   --line: #d9dee5;
   --line-strong: #b9c2ce;
 
-  --accent: #2456d6;
-  --accent-ink: #ffffff;
-  --accent-soft: #e3eafb;
+  --accent: #f9a03f;        /* brend fill — tugma, FAB, faol holat */
+  --accent-ink: #1b1408;    /* accent fill ustidagi matn/ikonka */
+  --accent-soft: #fdebd2;   /* yumshoq fon, chip */
+  --accent-deep: #f08e1f;   /* hover */
+  --accent-text: #ac5300;   /* accent rangdagi matn/ikonka — och fonda 4.5:1+ */
+
+  --blue: #2456d6;          /* ikkinchi brend rang — data (karta chipi) */
+  --blue-ink: #ffffff;
+  --blue-soft: #e3eafb;
 
   --good: #1e7f4a;
   --good-soft: #dff3e7;
@@ -36,9 +44,14 @@
     --muted: #9aa3ae;
     --line: #2a3038;
     --line-strong: #3a424d;
-    --accent: #7a9df2;
-    --accent-ink: #0e1626;
-    --accent-soft: #1c2a4a;
+    --accent: #f9a03f;
+    --accent-ink: #1b1408;
+    --accent-soft: #3a2810;
+    --accent-deep: #ffb257;
+    --accent-text: #f9a03f;
+    --blue: #7a9df2;
+    --blue-ink: #0e1626;
+    --blue-soft: #1c2a4a;
     --good: #5bc98a;
     --good-soft: #153524;
     --warn: #e5a94a;
@@ -57,9 +70,14 @@
   --muted: #9aa3ae;
   --line: #2a3038;
   --line-strong: #3a424d;
-  --accent: #7a9df2;
-  --accent-ink: #0e1626;
-  --accent-soft: #1c2a4a;
+  --accent: #f9a03f;
+  --accent-ink: #1b1408;
+  --accent-soft: #3a2810;
+  --accent-deep: #ffb257;
+  --accent-text: #f9a03f;
+  --blue: #7a9df2;
+  --blue-ink: #0e1626;
+  --blue-soft: #1c2a4a;
   --good: #5bc98a;
   --good-soft: #153524;
   --warn: #e5a94a;
