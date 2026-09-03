@@ -35,6 +35,13 @@ export function time(d: Date | string | number): string {
 export function isoDay(d: Date = new Date()): string {
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
 }
+
+const UZ_MONTHS = ['yanvar', 'fevral', 'mart', 'aprel', 'may', 'iyun', 'iyul', 'avgust', 'sentabr', 'oktabr', 'noyabr', 'dekabr']
+const UZ_WEEKDAYS = ['yakshanba', 'dushanba', 'seshanba', 'chorshanba', 'payshanba', 'juma', 'shanba']
+/** 3-sentabr, payshanba */
+export function uzDateLong(d: Date = new Date()): string {
+  return `${d.getDate()}-${UZ_MONTHS[d.getMonth()]}, ${UZ_WEEKDAYS[d.getDay()]}`
+}
 export function startOfDay(d: Date = new Date()): number {
   const x = new Date(d)
   x.setHours(0, 0, 0, 0)
