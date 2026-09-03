@@ -4,6 +4,8 @@ Avto-qismlar va aksessuar doʻkonlari uchun sotuv, qoldiq va nasiya hisobi. Tele
 
 **Holat:** MVP-1, lokal rejim (barcha maʼlumot brauzerda — IndexedDB). Supabase sinxronizatsiyasi va SMS-kirish — keyingi bosqich.
 
+**Jonli:** https://aliumirovux.github.io/rasta/ — `main` ga har push'da GitHub Actions build qilib Pages'ga chiqaradi (`.github/workflows/deploy.yml`, `BASE_PATH=/rasta/`).
+
 ## Ishga tushirish
 
 ```bash
@@ -37,6 +39,23 @@ src/
 - **Nasiya toʻlovi FIFO** — eng eski ochiq qarzdan boshlab yopiladi.
 - **Sotuv oʻchirilmaydi, faqat qaytariladi** (audit).
 - **UI matni faqat oʻzbek (lotin)**, apostrof — `ʻ` (U+02BB). Lugʻat: PRD 10-boʻlim.
+
+## Push (brauzer orqali, tokensiz)
+
+GitHub web-upload papka yoʻlini saqlamaydi — har papka oʻz manziliga yuklanadi, keyin Actions oʻzi build qiladi:
+
+| Papka | Upload manzili |
+|---|---|
+| root (index.html, package.json, vite.config.ts …) | `https://github.com/aliumirovux/rasta/upload/main` |
+| `src/` | `…/upload/main/src` |
+| `src/lib/` | `…/upload/main/src/lib` |
+| `src/components/` | `…/upload/main/src/components` |
+| `src/screens/` | `…/upload/main/src/screens` |
+| `src/styles/` | `…/upload/main/src/styles` |
+| `public/` | `…/upload/main/public` |
+| `.github/workflows/` | `…/upload/main/.github/workflows` |
+
+Yangi paket qoʻshilsa `package.json` **va** `package-lock.json` birga yuklanadi (Actions `npm ci` ishlatadi).
 
 ## Keyingi bosqichlar
 

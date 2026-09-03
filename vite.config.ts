@@ -6,8 +6,11 @@ import { viteSingleFile } from 'vite-plugin-singlefile'
 
 // `SINGLEFILE=1 vite build` → bitta HTML fayl (preview/artifact uchun), PWA o'chiriladi.
 const single = process.env.SINGLEFILE === '1'
+// GitHub Pages: sayt /rasta/ ostida ochiladi → BASE_PATH=/rasta/ (CI da beriladi). Lokal: '/'
+const base = process.env.BASE_PATH || '/'
 
 export default defineConfig({
+  base: single ? './' : base,
   plugins: [
     react(),
     ...(single
@@ -21,7 +24,8 @@ export default defineConfig({
               short_name: 'Rasta',
               description: "Avto-qismlar do'koni uchun sotuv, qoldiq va nasiya hisobi",
               lang: 'uz',
-              start_url: '/',
+              start_url: base,
+              scope: base,
               display: 'standalone',
               background_color: '#F4F5F7',
               theme_color: '#2456D6',
