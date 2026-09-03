@@ -1,0 +1,71 @@
+/* Rasta — dizayn tokenlari. Figma o'rniga shu fayl haqiqat manbai.
+   Qoida: komponentlar faqat shu o'zgaruvchilardan rang oladi; hex faqat shu yerda. */
+:root {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --surface-2: #edf0f4;
+  --ink: #171b21;
+  --muted: #5c6673;
+  --line: #d9dee5;
+  --line-strong: #b9c2ce;
+
+  --accent: #2456d6;
+  --accent-ink: #ffffff;
+  --accent-soft: #e3eafb;
+
+  --good: #1e7f4a;
+  --good-soft: #dff3e7;
+  --warn: #b96a00;
+  --warn-soft: #fbedd6;
+  --crit: #c0392b;
+  --crit-soft: #fadfd9;
+  --neutral: #5c6673;
+  --neutral-soft: #e6e9ee;
+
+  --tap: 44px;
+  --tabbar-h: 64px;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #111418;
+    --surface: #181c22;
+    --surface-2: #1f242b;
+    --ink: #e8ebef;
+    --muted: #9aa3ae;
+    --line: #2a3038;
+    --line-strong: #3a424d;
+    --accent: #7a9df2;
+    --accent-ink: #0e1626;
+    --accent-soft: #1c2a4a;
+    --good: #5bc98a;
+    --good-soft: #153524;
+    --warn: #e5a94a;
+    --warn-soft: #3a2a10;
+    --crit: #ee7a6e;
+    --crit-soft: #3e1a17;
+    --neutral: #9aa3ae;
+    --neutral-soft: #262c35;
+  }
+}
+:root[data-theme='dark'] {
+  --bg: #111418;
+  --surface: #181c22;
+  --surface-2: #1f242b;
+  --ink: #e8ebef;
+  --muted: #9aa3ae;
+  --line: #2a3038;
+  --line-strong: #3a424d;
+  --accent: #7a9df2;
+  --accent-ink: #0e1626;
+  --accent-soft: #1c2a4a;
+  --good: #5bc98a;
+  --good-soft: #153524;
+  --warn: #e5a94a;
+  --warn-soft: #3a2a10;
+  --crit: #ee7a6e;
+  --crit-soft: #3e1a17;
+  --neutral: #9aa3ae;
+  --neutral-soft: #262c35;
+}
