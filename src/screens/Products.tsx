@@ -43,7 +43,11 @@ export default function Products() {
   const [model, setModel] = useState('')
   const stockF = (params.get('stock') as StockFilter) || 'all'
   const [pick, setPick] = useState<null | 'cat' | 'model'>(null)
-  const [adding, setAdding] = useState(false)
+  const [adding, setAdding] = useState(() => params.get('add') === '1')
+  const closeAdd = () => {
+    setAdding(false)
+    if (params.get('add')) { params.delete('add'); setParams(params, { replace: true }) }
+  }
 
   const all = useLiveQuery(() => db.products.where('status').equals('active').sortBy('name'), [])
   const list = useMemo(() => {
@@ -121,7 +125,7 @@ export default function Products() {
         <PickList value={model} options={CAR_MODELS} onPick={(v) => { setModel(v); setPick(null) }} />
       </Sheet>
 
-      <ProductForm open={adding} onClose={() => setAdding(false)} initialName={q} />
+      <ProductForm open={adding} onClose={closeAdd} initialName={q} />
     </div>
   )
 }
@@ -129,9 +133,9 @@ export default function Products() {
 export function PickList({ value, options, onPick }: { value: string; options: readonly string[]; onPick: (v: string) => void }) {
   return (
     <ul className="-mx-2">
-      <li><button onClick={() => onPick('')} className={`flex h-11 w-full items-center justify-between rounded px-3 text-left ${!value ? 'bg-accent-soft text-accent' : 'hover:bg-surface-2'}`}>Hammasi{!value && <Icon name="check" size={18} />}</button></li>
+      <li><button onClick={() => onPick('')} className={`flex h-11 w-full items-center justify-between rounded px-3 text-left ${!value ? 'bg-accent-soft text-accent-text' : 'hover:bg-surface-2'}`}>Hammasi{!value && <Icon name="check" size={18} />}</button></li>
       {options.map((o) => (
-        <li key={o}><button onClick={() => onPick(o)} className={`flex h-11 w-full items-center justify-between rounded px-3 text-left ${value === o ? 'bg-accent-soft text-accent' : 'hover:bg-surface-2'}`}>{o}{value === o && <Icon name="check" size={18} />}</button></li>
+        <li key={o}><button onClick={() => onPick(o)} className={`flex h-11 w-full items-center justify-between rounded px-3 text-left ${value === o ? 'bg-accent-soft text-accent-text' : 'hover:bg-surface-2'}`}>{o}{value === o && <Icon name="check" size={18} />}</button></li>
       ))}
     </ul>
   )

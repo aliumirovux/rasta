@@ -46,7 +46,7 @@ export default function ProductCard() {
     <div>
       <Header title={p.name} back="/products" right={<><IconButton icon="edit" label="Tahrirlash" onClick={() => setEdit(true)} /><IconButton icon="archive" label="Arxivlash" onClick={() => setArchiveAsk(true)} /></>} />
       {p.status === 'archived' && (
-        <div className="flex items-center justify-between bg-neutral-soft px-4 py-2 text-sm text-neutral">Arxivda — qidiruvda chiqmaydi<button onClick={restore} className="font-medium text-accent">Qaytarish</button></div>
+        <div className="flex items-center justify-between bg-neutral-soft px-4 py-2 text-sm text-neutral">Arxivda — qidiruvda chiqmaydi<button onClick={restore} className="font-medium text-accent-text">Qaytarish</button></div>
       )}
       <div className="px-4 pt-4">
         <div className="flex flex-wrap items-center gap-2 text-[13px] text-muted">
@@ -61,7 +61,7 @@ export default function ProductCard() {
             <div>
               <div className="text-[13px] text-muted">Qoldiq</div>
               <div className={`font-display text-4xl font-bold leading-none tnum ${st === 'out' || st === 'negative' ? 'text-crit' : ''}`}>{p.stock} <span className="text-lg font-semibold text-muted">{p.unit}</span></div>
-              <div className="mt-2 flex items-center gap-2"><StockChip p={p} />{st === 'negative' && <button onClick={() => setAdjust(true)} className="text-sm font-medium text-accent">Tuzating</button>}</div>
+              <div className="mt-2 flex items-center gap-2"><StockChip p={p} />{st === 'negative' && <button onClick={() => setAdjust(true)} className="text-sm font-medium text-accent-text">Tuzating</button>}</div>
             </div>
             <Button variant="secondary" size="sm" onClick={() => setAdjust(true)}>Tuzatish</Button>
           </div>

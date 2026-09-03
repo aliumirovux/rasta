@@ -116,7 +116,7 @@ export function ProductForm({ open, onClose, initialName = '', edit, onSaved }: 
           <div className="flex flex-wrap gap-2">
             {CAR_MODELS.map((m) => (
               <button type="button" key={m} onClick={() => toggleModel(m)} aria-pressed={models.includes(m)}
-                className={`press h-9 rounded-full border px-3 text-sm ${models.includes(m) ? 'border-accent bg-accent-soft font-medium text-accent' : 'border-line bg-surface'}`}>{m}</button>
+                className={`press h-9 rounded-full border px-3 text-sm ${models.includes(m) ? 'border-accent bg-accent-soft font-medium text-accent-text' : 'border-line bg-surface'}`}>{m}</button>
             ))}
           </div>
         </div>
@@ -126,7 +126,7 @@ export function ProductForm({ open, onClose, initialName = '', edit, onSaved }: 
             ? <Field label="Boshlangʻich qoldiq" value={initStock} onChange={change(setInitStock)} inputMode="numeric" placeholder="0" suffix={unit} mono />
             : <Field label="Min qoldiq" value={minStock} onChange={change(setMinStock)} inputMode="numeric" mono suffix={unit} />}
         </div>
-        <button type="button" onClick={() => setMoreOpen((v) => !v)} className="flex h-11 items-center gap-1 self-start text-[15px] font-medium text-accent">
+        <button type="button" onClick={() => setMoreOpen((v) => !v)} className="flex h-11 items-center gap-1 self-start text-[15px] font-medium text-accent-text">
           Qoʻshimcha <Icon name="chevronDown" size={18} className={moreOpen ? 'rotate-180' : ''} />
         </button>
         {moreOpen && (

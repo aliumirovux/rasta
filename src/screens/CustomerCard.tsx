@@ -56,7 +56,7 @@ export default function CustomerCard() {
 
         <div className="mt-5 flex border-b border-line" role="tablist">
           {([['credits', 'Qarzlar'], ['payments', 'Toʻlovlar'], ['sales', 'Sotuvlar']] as [Tab, string][]).map(([k, l]) => (
-            <button key={k} role="tab" aria-selected={tab === k} onClick={() => setTab(k)} className={`h-11 flex-1 border-b-2 text-[15px] font-medium ${tab === k ? 'border-accent text-accent' : 'border-transparent text-muted'}`}>{l}</button>
+            <button key={k} role="tab" aria-selected={tab === k} onClick={() => setTab(k)} className={`h-11 flex-1 border-b-2 text-[15px] font-medium ${tab === k ? 'border-accent text-accent-text' : 'border-transparent text-muted'}`}>{l}</button>
           ))}
         </div>
 
@@ -147,7 +147,7 @@ function ReceivePayment({ open, onClose, customerId, debt, credits }: { open: bo
         <div>
           <div className="mb-1.5 text-sm font-medium">Usul</div>
           <div className="grid grid-cols-3 gap-2">
-            {METHODS.map((m) => <button key={m.id} onClick={() => setMethod(m.id)} aria-pressed={method === m.id} className={`press flex h-11 items-center justify-center gap-1.5 rounded border text-sm font-medium ${method === m.id ? 'border-accent bg-accent-soft text-accent' : 'border-line bg-surface'}`}><Icon name={m.icon} size={16} />{m.label}</button>)}
+            {METHODS.map((m) => <button key={m.id} onClick={() => setMethod(m.id)} aria-pressed={method === m.id} className={`press flex h-11 items-center justify-center gap-1.5 rounded border text-sm font-medium ${method === m.id ? 'border-accent bg-accent-soft text-accent-text' : 'border-line bg-surface'}`}><Icon name={m.icon} size={16} />{m.label}</button>)}
           </div>
         </div>
         <div className="grid grid-cols-2 gap-3">

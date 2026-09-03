@@ -83,7 +83,7 @@ export default function Sell() {
                     <div className="mt-0.5 flex flex-wrap items-center gap-x-2 text-[13px] text-muted">{p.sku && <span className="font-mono">{p.sku}</span>}<span>{p.models.join(', ')}</span><StockChip p={p} /></div>
                   </button>
                   <div className="flex flex-col items-end"><span className="font-mono text-[15px] font-medium tnum">{money(p.price, false)}</span><span className={`text-[13px] tnum ${p.stock <= 0 ? 'text-crit' : 'text-muted'}`}>{p.stock} {p.unit}</span></div>
-                  <button aria-label={`${p.name} — savatga`} onClick={() => add(p)} className="press flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent"><Icon name="plus" size={22} strokeWidth={2.2} /></button>
+                  <button aria-label={`${p.name} — savatga`} onClick={() => add(p)} className="press flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent-text"><Icon name="plus" size={22} strokeWidth={2.2} /></button>
                 </li>
               ))}
             </ul>
@@ -230,7 +230,7 @@ function Payment({ open, onClose, lines, total, onDone }: { open: boolean; onClo
         {PAY.map((p) => (
           <button key={p.id} role="radio" aria-checked={type === p.id} onClick={() => setType(p.id)}
             className={`flex h-14 w-full items-center gap-3 border-b border-line px-4 text-left last:border-b-0 ${type === p.id ? 'bg-accent-soft' : 'bg-surface hover:bg-surface-2'}`}>
-            <Icon name={p.icon} size={22} className={type === p.id ? 'text-accent' : 'text-muted'} />
+            <Icon name={p.icon} size={22} className={type === p.id ? 'text-accent-text' : 'text-muted'} />
             <span className="flex-1"><span className="block font-medium">{p.label}</span><span className="block text-[13px] text-muted">{p.hint}</span></span>
             <span className={`flex h-5 w-5 items-center justify-center rounded-full border-2 ${type === p.id ? 'border-accent bg-accent text-accent-ink' : 'border-line-strong'}`}>{type === p.id && <Icon name="check" size={12} strokeWidth={3} />}</span>
           </button>
@@ -253,7 +253,7 @@ function Payment({ open, onClose, lines, total, onDone }: { open: boolean; onClo
               <div className="flex items-center gap-3 rounded border border-line bg-surface px-3.5 py-2.5">
                 <Icon name="user" size={20} className="text-muted" />
                 <div className="min-w-0 flex-1"><div className="truncate font-medium">{customer.name}</div><div className="text-[13px] text-muted">{customer.phone ? phone(customer.phone) : 'Telefon yoʻq'}</div></div>
-                <button onClick={() => setPickCustomer(true)} className="text-sm font-medium text-accent">Oʻzgartirish</button>
+                <button onClick={() => setPickCustomer(true)} className="text-sm font-medium text-accent-text">Oʻzgartirish</button>
               </div>
             ) : (
               <Button variant="secondary" full icon="user" onClick={() => setPickCustomer(true)}>Mijozni tanlash</Button>
@@ -268,8 +268,8 @@ function Payment({ open, onClose, lines, total, onDone }: { open: boolean; onClo
           <div>
             <div className="mb-1.5 text-sm font-medium">Muddat</div>
             <div className="flex flex-wrap gap-2">
-              {DUE.map((d) => <button key={d} onClick={() => { setDueDays(d); setDueDate('') }} aria-pressed={!dueDate && dueDays === d} className={`press h-10 rounded-full border px-4 text-sm font-medium ${!dueDate && dueDays === d ? 'border-accent bg-accent-soft text-accent' : 'border-line bg-surface'}`}>{d} kun</button>)}
-              <label className={`inline-flex h-10 cursor-pointer items-center gap-1 rounded-full border px-3 text-sm font-medium ${dueDate ? 'border-accent bg-accent-soft text-accent' : 'border-line bg-surface'}`}>
+              {DUE.map((d) => <button key={d} onClick={() => { setDueDays(d); setDueDate('') }} aria-pressed={!dueDate && dueDays === d} className={`press h-10 rounded-full border px-4 text-sm font-medium ${!dueDate && dueDays === d ? 'border-accent bg-accent-soft text-accent-text' : 'border-line bg-surface'}`}>{d} kun</button>)}
+              <label className={`inline-flex h-10 cursor-pointer items-center gap-1 rounded-full border px-3 text-sm font-medium ${dueDate ? 'border-accent bg-accent-soft text-accent-text' : 'border-line bg-surface'}`}>
                 <Icon name="calendar" size={16} />Sana
                 <input type="date" value={dueDate} min={isoDay()} onChange={(e) => setDueDate(e.target.value)} className="w-0 opacity-0" aria-label="Muddat sanasi" />
               </label>
@@ -312,12 +312,12 @@ export function CustomerPicker({ open, onClose, onPick }: { open: boolean; onClo
         <div className="flex flex-col gap-4 pt-1">
           <Field label="Ismi *" value={name} onChange={setName} placeholder="Sherzod usta" autoFocus />
           <Field label="Telefon" value={ph} onChange={(v) => setPh(v ? phoneMask(v) : '')} inputMode="tel" placeholder="+998 __ ___-__-__" mono hint="Eslatma yuborish uchun" />
-          <button onClick={() => setCreating(false)} className="self-start text-sm font-medium text-accent">← Roʻyxatga qaytish</button>
+          <button onClick={() => setCreating(false)} className="self-start text-sm font-medium text-accent-text">← Roʻyxatga qaytish</button>
         </div>
       ) : (
         <div className="pt-1">
           <Field value={q} onChange={setQ} placeholder="Ism yoki telefon…" autoFocus />
-          <button onClick={() => { setCreating(true); setName(q) }} className="mt-3 flex h-11 w-full items-center gap-2 rounded px-2 text-left font-medium text-accent hover:bg-accent-soft"><Icon name="plus" size={18} />Yangi mijoz{q ? `: „${q}“` : ''}</button>
+          <button onClick={() => { setCreating(true); setName(q) }} className="mt-3 flex h-11 w-full items-center gap-2 rounded px-2 text-left font-medium text-accent-text hover:bg-accent-soft"><Icon name="plus" size={18} />Yangi mijoz{q ? `: „${q}“` : ''}</button>
           <ul className="mt-1">
             {list.map((c) => (
               <li key={c.id}><button onClick={() => onPick(c)} className="flex h-12 w-full items-center gap-3 rounded px-2 text-left hover:bg-surface-2"><Icon name="user" size={18} className="text-muted" /><span className="flex-1 truncate">{c.name}</span><span className="font-mono text-[13px] text-muted">{c.phone ? phone(c.phone) : ''}</span></button></li>
